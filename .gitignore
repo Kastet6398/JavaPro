@@ -1,3 +1,5 @@
 .idea/
 .git/
+
+# The following pattern wasn't included in the task, but all files with the .iml extension contain the Idea's config too.
 *.iml
