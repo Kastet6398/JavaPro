@@ -31,7 +31,7 @@ public class Animal {
         if (swimLimit == 0) {
             System.out.println(name + " cannot swim");
         } else if (distance <= 0) {
-            System.out.println(name + " cannot run a negative distance");
+            System.out.println(name + " cannot swim a negative distance");
         }  else if (distance <= swimLimit) {
             System.out.println(name + " has swam " + distance + " m");
         } else {
