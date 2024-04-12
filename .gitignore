@@ -1,10 +1,6 @@
 .idea/
 .git/
-<<<<<<< HEAD
 
 # The following pattern wasn't included in the task, but all files with the .iml extension contain the Idea's config too.
 *.iml
 out
-=======
-*.iml
->>>>>>> parent of 5da830c (*.iml pattern comment)
