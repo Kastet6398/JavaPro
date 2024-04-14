@@ -1,7 +1,7 @@
 package geometricfigures;
 
 public class Circle implements GeometricFigure {
-    private double radius;
+    private final double radius;
 
     public Circle(double radius) {
         this.radius = radius;
@@ -9,10 +9,6 @@ public class Circle implements GeometricFigure {
 
     public double getRadius() {
         return radius;
-    }
-
-    public void setRadius(double radius) {
-        this.radius = radius;
     }
 
     @Override

@@ -3,6 +3,19 @@ package geometricfigures;
 public class Triangle implements GeometricFigure {
     private final double a;
     private final double b;
+
+    public double getA() {
+        return a;
+    }
+
+    public double getB() {
+        return b;
+    }
+
+    public double getC() {
+        return c;
+    }
+
     private final double c;
 
     public Triangle(double a, double b, double c) {

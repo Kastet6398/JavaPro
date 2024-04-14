@@ -1,6 +1,6 @@
 package geometricfigures;
 public class Square implements GeometricFigure {
-    private double side;
+    private final double side;
 
     public Square(double side) {
         this.side = side;
@@ -8,10 +8,6 @@ public class Square implements GeometricFigure {
 
     public double getSide() {
         return side;
-    }
-
-    public void setSide(double side) {
-        this.side = side;
     }
 
     @Override
