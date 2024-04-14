@@ -1,10 +1,19 @@
 package competition;
 
 
-public record Robot(String name) implements Participant {
+public class Robot implements Participant {
     private static final double MAX_LENGTH = 5000;
     private static final double MAX_HEIGHT = 5;
 
+    private final String name;
+
+    public String getName() {
+        return name;
+    }
+
+    public Robot(String name) {
+        this.name = name;
+    }
     @Override
     public String toString() {
         return STR."Robot{name='\{name}'}";

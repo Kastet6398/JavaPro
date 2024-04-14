@@ -1,8 +1,17 @@
 package competition;
 
-public record Human(String name) implements Participant {
+public class Human implements Participant {
     private static final double MAX_LENGTH = 1024;
     private static final double MAX_HEIGHT = 2;
+    private final String name;
+
+    public String getName() {
+        return name;
+    }
+
+    public Human(String name) {
+        this.name = name;
+    }
 
     @Override
     public String toString() {
