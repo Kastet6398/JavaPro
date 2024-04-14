@@ -11,9 +11,9 @@ public class RunningTrack implements Obstacle {
     public boolean overcome(Participant participant) {
         boolean canOvercome = participant.run(length);
         if (canOvercome) {
-            System.out.println(STR."Participant \{participant.name()} has overcome the running track (\{length} m).");
+            System.out.println(STR."Participant \{participant.getName()} has overcome the running track (\{length} m).");
         } else {
-            System.out.println(STR."Participant \{participant.name()} hasn't overcome the running track (\{length} m).");
+            System.out.println(STR."Participant \{participant.getName()} hasn't overcome the running track (\{length} m).");
         }
         return canOvercome;
     }

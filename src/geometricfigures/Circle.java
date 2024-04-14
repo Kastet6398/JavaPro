@@ -1,6 +1,16 @@
 package geometricfigures;
 
-public record Circle(double radius) implements GeometricFigure {
+public class Circle implements GeometricFigure {
+    private final double radius;
+
+    public Circle(double radius) {
+        this.radius = radius;
+    }
+
+    public double getRadius() {
+        return radius;
+    }
+
     @Override
     public String toString() {
         return STR."Circle{radius=\{radius}}";

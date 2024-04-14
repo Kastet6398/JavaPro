@@ -1,6 +1,29 @@
 package geometricfigures;
 
-public record Triangle(double a, double b, double c) implements GeometricFigure {
+public class Triangle implements GeometricFigure {
+    private final double a;
+    private final double b;
+
+    public double getA() {
+        return a;
+    }
+
+    public double getB() {
+        return b;
+    }
+
+    public double getC() {
+        return c;
+    }
+
+    private final double c;
+
+    public Triangle(double a, double b, double c) {
+        this.a = a;
+        this.b = b;
+        this.c = c;
+    }
+
     @Override
     public String toString() {
         return STR."Triangle{a=\{a}, b=\{b}, c=\{c}}";
