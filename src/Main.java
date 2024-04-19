@@ -1,6 +1,11 @@
+import java.util.Random;
+import java.util.Scanner;
+
 public class Main {
+    private static Random random;
 
     public static void main(String[] args) {
+        random = new Random();
         System.out.println(findSymbolOccurrence("hello", 'l'));
         System.out.println(findSymbolOccurrence("hello", 'm'));
         System.out.println(findWordPosition("Apollo", "pollo"));
@@ -8,9 +13,10 @@ public class Main {
         System.out.println(stringReverse("Hello"));
         System.out.println(isPalindrome("ERE"));
         System.out.println(isPalindrome("not"));
-        String[] words = {"apple", "orange", "lemon", "banana", "apricot", "avocado" , "broccoli", "carrot", "cherry", "garlic", "grape", "melon", "leak", "kiwi", "mango", "mushroom", "nut", "olive", " pea", "peanut", "pear", "pepper", "pineapple", "pumpkin", "potato"};
+        String[] words = {"apple", "orange", "lemon", "banana", "apricot", "avocado", "broccoli", "carrot", "cherry", "garlic", "grape", "melon", "leak", "kiwi", "mango", "mushroom", "nut", "olive", "pea", "peanut", "pear", "pepper", "pineapple", "pumpkin", "potato"};
         playWordGuessingGame(words);
     }
+
 
     public static int findSymbolOccurrence(String str, char symbol) {
         int count = 0;
@@ -35,10 +41,10 @@ public class Main {
     }
 
     public static void playWordGuessingGame(String[] words) {
-        String chosenWord = words[(int) (Math.random() * words.length)];
+        String chosenWord = words[random.nextInt(0, words.length)];
         StringBuilder guessedWord = new StringBuilder();
         guessedWord.append("#".repeat(15));
-        java.util.Scanner scanner = new java.util.Scanner(System.in);
+        Scanner scanner = new Scanner(System.in);
         while (!guessedWord.toString().equals(chosenWord)) {
             System.out.println(STR."Guess the word: \{guessedWord}");
             System.out.print("Your guess: ");
