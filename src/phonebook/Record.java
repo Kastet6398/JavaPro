@@ -1,6 +1,11 @@
 package phonebook;
 
 public class Record {
+    @Override
+    public String toString() {
+        return STR."Record{name='\{name}', phone='\{phone}'}";
+    }
+
     private final String name;
     private String phone;
 
