@@ -24,6 +24,10 @@ public class PhoneBook {
     }
 
     public List<Record> findAll(String name) {
-        return records.stream().filter(x -> x.getName().equals(name)).toList();
+        List<Record> res = records.stream().filter(x -> x.getName().equals(name)).toList();
+        if (res.isEmpty()) {
+            return null;
+        }
+        return res;
     }
 }
