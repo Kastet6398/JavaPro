@@ -3,31 +3,33 @@ package coffee.order;
 import java.util.*;
 
 public class CoffeeOrderBoard {
-    private final Map<Integer, Order> orders = new HashMap<>();
+    private final Queue<Order> ordersQueue = new LinkedList<>();
+    private int orderIdCounter = 0;
 
     public void add(String customerName) {
-        int id = orders.keySet().stream().mapToInt(a -> a).max().orElse(0) + 1;
-        Order newOrder = new Order(id, customerName);
-        orders.put(id, newOrder);
+        Order newOrder = new Order(orderIdCounter++, customerName);
+        ordersQueue.offer(newOrder);
     }
 
     public Order deliver() {
-        if (orders.isEmpty()) {
-            return null;
-        }
-        int nextId = orders.keySet().stream().findFirst().get();
-        return orders.remove(nextId);
+        return ordersQueue.poll();
     }
 
     public Order deliver(int id) {
-        return orders.remove(id);
+        for (Order order : ordersQueue) {
+            if (order.id() == id) {
+                ordersQueue.remove(order);
+                return order;
+            }
+        }
+        return null;
     }
 
     public void draw() {
         System.out.println("===============");
         System.out.println("ID | Name");
-        for (Map.Entry<Integer, Order> order : orders.entrySet()) {
-            System.out.println(STR."\{order.getKey()} | \{order.getValue().customerName()}");
+        for (Order order : ordersQueue) {
+            System.out.println(STR."\{order.id()} | \{order.customerName()}");
         }
     }
 }

@@ -19,7 +19,7 @@ public class Main {
         System.out.println(nextOrder);
         System.out.println();
 
-        int orderIdToDeliver = 3;
+        int orderIdToDeliver = 2;
         Order specificOrder = pendingOrders.deliver(orderIdToDeliver);
         System.out.println(STR."Delivered order with ID \{orderIdToDeliver}:");
         System.out.println(specificOrder);
