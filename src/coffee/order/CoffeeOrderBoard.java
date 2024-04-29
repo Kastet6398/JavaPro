@@ -3,22 +3,22 @@ package coffee.order;
 import java.util.*;
 
 public class CoffeeOrderBoard {
-    private final Queue<Order> ordersQueue = new LinkedList<>();
+    private final Queue<Order> orders = new LinkedList<>();
     private int orderIdCounter = 0;
 
     public void add(String customerName) {
         Order newOrder = new Order(orderIdCounter++, customerName);
-        ordersQueue.add(newOrder);
+        orders.add(newOrder);
     }
 
     public Order deliver() {
-        return ordersQueue.poll();
+        return orders.poll();
     }
 
     public Order deliver(int id) {
-        for (Order order : ordersQueue) {
+        for (Order order : orders) {
             if (order.id() == id) {
-                ordersQueue.remove(order);
+                orders.remove(order);
                 return order;
             }
         }
@@ -28,7 +28,7 @@ public class CoffeeOrderBoard {
     public void draw() {
         System.out.println("===============");
         System.out.println("ID | Name");
-        for (Order order : ordersQueue) {
+        for (Order order : orders) {
             System.out.println(STR."\{order.id()} | \{order.customerName()}");
         }
     }
