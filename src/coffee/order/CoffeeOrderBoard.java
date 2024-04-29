@@ -8,7 +8,7 @@ public class CoffeeOrderBoard {
 
     public void add(String customerName) {
         Order newOrder = new Order(orderIdCounter++, customerName);
-        ordersQueue.offer(newOrder);
+        ordersQueue.add(newOrder);
     }
 
     public Order deliver() {
