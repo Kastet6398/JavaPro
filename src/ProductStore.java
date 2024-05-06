@@ -2,7 +2,7 @@ import java.time.LocalDate;
 import java.util.*;
 import java.util.stream.Collectors;
 
-public class ProductFactory {
+public class ProductStore {
     private final List<Product> products = new ArrayList<>();
 
     public List<Product> getExpensiveBooks() {
@@ -14,11 +14,11 @@ public class ProductFactory {
     public List<Product> getDiscountedBooks() {
         return products.stream()
                        .filter(product -> product.getType().equals("Book") && product.hasDiscount())
-                       .map(product ->  new Product(product.getType(),
-                                               product.getPrice() * 0.9,
-                                                    product.hasDiscount(),
-                                                    product.getCreateDate(),
-                                                    product.getId())
+                       .map(product -> new Product(product.getType(),
+                                              product.getPrice() * 0.9,
+                                                   product.hasDiscount(),
+                                                   product.getCreateDate(),
+                                                   product.getId())
                        )
                        .collect(Collectors.toList());
     }
