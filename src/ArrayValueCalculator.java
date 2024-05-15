@@ -37,9 +37,9 @@ public class ArrayValueCalculator {
             int result = doCalc(numbers);
             System.out.println("Result: " + result);
         } catch (ArraySizeException e) {
-            System.err.println(e.getClass().getSimpleName() + ": " + e.getMessage());
+            System.err.println("ArraySizeException: " + e.getMessage());
         } catch (ArrayDataException e) {
-            System.err.println(e.getClass().getSimpleName() + ": " + e.getMessage());
+            System.err.println("ArrayDataException: " + e.getMessage());
         }
     }
 }
