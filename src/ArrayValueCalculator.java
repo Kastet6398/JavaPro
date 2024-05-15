@@ -1,20 +1,24 @@
 import java.util.Arrays;
 
 public class ArrayValueCalculator {
-    public static int doCalc(String[][] array) throws ArraySizeException, ArrayDataException {
-        if (array.length != 4) {
-            throw new ArraySizeException("The size of the array must be 4x4");
+    public static int doCalc(String[][] numbers) throws ArraySizeException, ArrayDataException {
+        if (numbers.length != 4) {
+            throw new ArraySizeException("The size of the numbers must be 4x4");
+        }
+
+        for (String[] arr : numbers) {
+            if (arr.length != 4) {
+                throw new ArraySizeException("The size of the numbers must be 4x4");
+            }
         }
 
         int sum = 0;
         for (int i = 0; i < 4; i++) {
             for (int j = 0; j < 4; j++) {
                 try {
-                    sum += Integer.parseInt(array[i][j]);
+                    sum += Integer.parseInt(numbers[i][j]);
                 } catch (NumberFormatException e) {
-                    throw new ArrayDataException("Malformed data in cell", i, j);
-                } catch (ArrayIndexOutOfBoundsException e1) {
-                    throw new ArraySizeException("The size of the array must be 4x4");
+                    throw new ArrayDataException("Malformed data in cell: row: " + i + ", column: " + j, i, j);
                 }
             }
         }
@@ -22,7 +26,7 @@ public class ArrayValueCalculator {
     }
 
     public static void main(String[] args) {
-        String[][] array = {
+        String[][] numbers = {
                 {"1", "2", "3", "4"},
                 {"5", "6", "7", "8"},
                 {"9", "10", "11", "12"},
@@ -30,12 +34,12 @@ public class ArrayValueCalculator {
         };
 
         try {
-            int result = doCalc(array);
+            int result = doCalc(numbers);
             System.out.println("Result: " + result);
         } catch (ArraySizeException e) {
-            System.out.println(e.getClass().getSimpleName() + ": " + e.getMessage());
+            System.err.println(e.getClass().getSimpleName() + ": " + e.getMessage());
         } catch (ArrayDataException e) {
-            System.out.println(e.getClass().getSimpleName() + ": " + e.getMessage() + ", row: " + e.getRow() + ", column: " + e.getColumn());
+            System.err.println(e.getClass().getSimpleName() + ": " + e.getMessage());
         }
     }
 }
