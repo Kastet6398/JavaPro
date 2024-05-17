@@ -24,12 +24,11 @@ public class BookAnalyzer {
 	List<Map.Entry<String, Long>> sortedWordList;
 
         try (Stream<String> lines = Files.lines(bookFile.toPath())) {
-	    List<String> lineList = lines.collect(Collectors.toList());
+	    List<String> lineList = lines.flatMap(line -> Arrays.stream(line.toLowerCase().replaceAll("[^a-z\\s]", "").split("\\s+"))).collect(Collectors.toList());
 	    numOfWords = new HashSet<String>(lineList).size();
             sortedWordList = lineList
 		    .stream()
-                    .flatMap(line -> Arrays.stream(line.replaceAll("[^a-zA-Z\\s]", "").split("\\s+")))
-                    .filter(word -> word.length() > 2)
+		    .filter(word -> word.length() > 2)
                     .collect(Collectors.collectingAndThen(
                         Collectors.groupingBy(
                             s -> s,
@@ -53,7 +52,7 @@ public class BookAnalyzer {
                 .forEach(entry -> System.out.println(entry.getKey() + ": " + entry.getValue()));
 
         // Output the number of unique words
-        System.out.println("Number of unique words: " + sortedWordList.size());
+        System.out.println("Number of unique words: " + numOfWords);
 
         // Write the statistics into the stats file
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(bookName + "_statistics.txt"))) {
@@ -65,7 +64,7 @@ public class BookAnalyzer {
                     e.printStackTrace();
                 }
             });
-            writer.write("Number of unique words: " + (sortedWordList != null ? sortedWordList.size() : 0));
+            writer.write("Number of unique words: " + numOfWords);
         } catch (IOException e) {
             System.out.println("Error writing the statistics to file: " + e.getMessage());
         }
